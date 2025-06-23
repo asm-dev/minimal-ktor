@@ -10,18 +10,16 @@ Un microproyecto en [Ktor](https://ktor.io) (Kotlin) que simplemente imprime un 
 - [IntelliJ IDEA](https://www.jetbrains.com/idea/), no es obligatorio, pero lo recomiendo para abrir el proyecto.
 - [Java 17+](https://adoptium.net/) instalado si deseas ejecutar el `.jar` manualmente (no necesario si solo usas Docker).
 
-Una vez completadas las instalaciones pertinentes:
+**Ejecución**:
 
 1. Clona el repositorio y ve al directorio en tu máquina
 2. Compila el `.jar` con Gradle Wrapper mediante el comando `./gradlew clean build`.
 3. Construye la imagen Docker con `docker build -t minimal-ktor-test .`
-4. Ejecuta la imagen `docker run --rm minimal-ktor-test`
+4. Ejecuta la imagen `docker run -d --name ktor-test minimal-ktor-test`
 
-Deberías ver en consola:
+**Comprobaciones**:
 
-```
-¡Estoy vivo!
-```
+Si ejecutas `docker ps` deberías poder ver el contenedor, y si ejecutas `docker logs ktor-test` deberías poder ver el mensaje "¡Estoy vivo!".
 
 ## Descripción de los archivos principales
 
