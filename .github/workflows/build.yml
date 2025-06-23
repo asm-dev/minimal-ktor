@@ -13,5 +13,8 @@ jobs:
       - name: Checkout del repositorio
         uses: actions/checkout@v3
 
+      - name: Dar permisos al gradlew
+        run: chmod +x ./gradlew
+
       - name: Construir la imagen Docker
         run: docker build .
