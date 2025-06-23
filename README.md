@@ -43,8 +43,3 @@ Define cómo construir la imagen Docker:
 2. Ejecuta `./gradlew build` dentro del contenedor.
 3. Copia el `.jar` generado a una imagen liviana.
 4. Lo ejecuta con `java -jar`.
-
-
-## Próximos pasos
-
-Este proyecto se utiliza en el contexto de una serie de actividades sobre Docker y CI/CD, por lo que continúa en construcción.
