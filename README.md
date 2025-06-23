@@ -2,19 +2,19 @@
 
 Un microproyecto en [Ktor](https://ktor.io) (Kotlin) que simplemente imprime un mensaje al arrancar. Utilizado para practicar el uso de Docker y flujos de integración con GitHub Actions.
 
-## Requisitos previos
+## Cómo ejecutar el proyecto
 
-Para poder ejecutar este proyecto necesitas:
+**Requisitos previos**:
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/) instalado y en ejecución. Asegúrate de que Docker usa el motor Linux.
 - [IntelliJ IDEA](https://www.jetbrains.com/idea/), no es obligatorio, pero lo recomiendo para abrir el proyecto.
 - [Java 17+](https://adoptium.net/) instalado si deseas ejecutar el `.jar` manualmente (no necesario si solo usas Docker).
 
-## Cómo ejecutar el proyecto
+Una vez completadas las instalaciones pertinentes:
 
 1. Clona el repositorio y ve al directorio en tu máquina
-2. Compila el `.jar` con Gradle Wrapper mediante el comando `./gradlew clean build`. Esto generará un archivo `build/libs/minimal-ktor.jar`.
-3. Construye la imagen Docker con `docker build -t minimal-ktor-test .` Esto usará el `Dockerfile` para compilar el proyecto dentro del contenedor y crear una imagen ejecutable.
+2. Compila el `.jar` con Gradle Wrapper mediante el comando `./gradlew clean build`.
+3. Construye la imagen Docker con `docker build -t minimal-ktor-test .`
 4. Ejecuta la imagen `docker run --rm minimal-ktor-test`
 
 Deberías ver en consola:
@@ -25,20 +25,20 @@ Deberías ver en consola:
 
 ## Descripción de los archivos principales
 
-### `Main.kt`
+`Main.kt`
 Código principal del proyecto. Contiene una función `main()` que imprime un mensaje.
 
 
-### `build.gradle.kts`
+`build.gradle.kts`
 Archivo de configuración de Gradle que define:
 - El uso del plugin Kotlin.
 - Dependencias del proyecto (`ktor-server-core`, `logback`).
 - La clase principal (`MainKt`) para incluir en el `.jar`.
 
-### `settings.gradle.kts`
+`settings.gradle.kts`
 Declara el nombre del proyecto (`minimal-ktor`).
 
-### `Dockerfile`
+`Dockerfile`
 Define cómo construir la imagen Docker:
 
 1. Usa una imagen base con Java 17.
