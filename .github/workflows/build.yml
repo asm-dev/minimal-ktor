@@ -1,0 +1,17 @@
+name: Docker Build on Tag
+
+on:
+  push:
+    tags:
+      - "*" # Especifica que se ejecutará en cualquier etiqueta
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v3
+
+      - name: Construir la imagen Docker
+        run: docker build .
