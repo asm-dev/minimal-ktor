@@ -1,45 +1,45 @@
-# Proyecto de prueba con Ktor
+# Ktor test project
 
-Un microproyecto en [Ktor](https://ktor.io) (Kotlin) que simplemente imprime un mensaje al arrancar. Utilizado para practicar el uso de Docker y flujos de integración con GitHub Actions.
+A micro-project in [Ktor](https://ktor.io) (Kotlin) that simply prints a message on startup. Used to practice Docker and integration workflows with GitHub Actions.
 
-## Cómo ejecutar el proyecto
+## How to run the project
 
-**Requisitos previos**:
+**Prerequisites**:
 
-- [Docker Desktop](https://www.docker.com/products/docker-desktop/) instalado y en ejecución. Asegúrate de que Docker usa el motor Linux.
-- [IntelliJ IDEA](https://www.jetbrains.com/idea/), no es obligatorio, pero lo recomiendo para abrir el proyecto.
-- [Java 17+](https://adoptium.net/) instalado si deseas ejecutar el `.jar` manualmente (no necesario si solo usas Docker).
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed and running. Make sure Docker uses the Linux engine.
+- [IntelliJ IDEA](https://www.jetbrains.com/idea/), not mandatory, but I recommend it to open the project.
+- [Java 17+](https://adoptium.net/) installed if you want to run the `.jar` manually (not needed if you only use Docker).
 
-**Ejecución**:
+**Execution**:
 
-1. Clona el repositorio y ve al directorio en tu máquina
-2. Compila el `.jar` con Gradle Wrapper mediante el comando `./gradlew clean build`.
-3. Construye la imagen Docker con `docker build -t minimal-ktor-test .`
-4. Ejecuta la imagen `docker run -d --name ktor-test minimal-ktor-test`
+1. Clone the repository and go to its directory on your machine
+2. Build the `.jar` with Gradle Wrapper using the command `./gradlew clean build`.
+3. Build the Docker image with `docker build -t minimal-ktor-test .`
+4. Run the image `docker run -d --name ktor-test minimal-ktor-test`
 
-**Comprobaciones**:
+**Checks**:
 
-Si ejecutas `docker ps` deberías poder ver el contenedor, y si ejecutas `docker logs ktor-test` deberías poder ver el mensaje "¡Estoy vivo!".
+If you run `docker ps` you should be able to see the container, and if you run `docker logs ktor-test` you should be able to see the message "¡Estoy vivo!".
 
-## Descripción de los archivos principales
+## Description of the main files
 
 `Main.kt`
-Código principal del proyecto. Contiene una función `main()` que imprime un mensaje.
+Main code of the project. Contains a `main()` function that prints a message.
 
 
 `build.gradle.kts`
-Archivo de configuración de Gradle que define:
-- El uso del plugin Kotlin.
-- Dependencias del proyecto (`ktor-server-core`, `logback`).
-- La clase principal (`MainKt`) para incluir en el `.jar`.
+Gradle configuration file that defines:
+- The use of the Kotlin plugin.
+- Project dependencies (`ktor-server-core`, `logback`).
+- The main class (`MainKt`) to include in the `.jar`.
 
 `settings.gradle.kts`
-Declara el nombre del proyecto (`minimal-ktor`).
+Declares the project name (`minimal-ktor`).
 
 `Dockerfile`
-Define cómo construir la imagen Docker:
+Defines how to build the Docker image:
 
-1. Usa una imagen base con Java 17.
-2. Ejecuta `./gradlew build` dentro del contenedor.
-3. Copia el `.jar` generado a una imagen liviana.
-4. Lo ejecuta con `java -jar`.
+1. Uses a base image with Java 17.
+2. Runs `./gradlew build` inside the container.
+3. Copies the generated `.jar` to a lightweight image.
+4. Runs it with `java -jar`.
